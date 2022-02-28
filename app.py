@@ -21,7 +21,7 @@ server = app.server
 
 df_Q = pd.read_excel('data_deploy/INDICATORS_Q.xlsx')
 df_M = pd.read_excel('data_deploy/INDICATORS_M.xlsx')
-df_rrp = pd.read_excel('data_deploy/sdir.xlsx', sheet_name = "monthly")
+df_rrp = pd.read_excel('data_deploy/sdir.xlsx')
 
 
 ## Changing dates
