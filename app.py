@@ -43,7 +43,7 @@ rrp = df_rrp.loc[:, ['date', 'rrpovernight']]
 
 
 gdp = gdp.rename(columns = {'Gross Domestic Product (constant 2018 prices)': 'rgdp'})
-inf = inf.rename(columns = {'Inflation rate (2012=100), all items': 'inflation'})
+inf = inf.rename(columns = {'Inflation rate (2018=100), all items': 'inflation'})
 usd = usd.rename(columns = {'FOREX: USD to PHP, end of period': 'usdphp'})
 
 
