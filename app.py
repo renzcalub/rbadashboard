@@ -26,7 +26,6 @@ df_rrp = pd.read_excel('data_deploy/sdir.xlsx')
 
 ## Changing dates
 
-df_A['PERIOD'] = df_A['PERIOD'].dt.strftime('%m/%d/%Y')
 df_M['PERIOD'] = df_M['PERIOD'].dt.strftime('%m/%d/%Y')
 df_Q['PERIOD'] = df_Q['PERIOD'].dt.strftime('%m/%d/%Y')
 df_rrp['date'] = df_rrp['date'].dt.strftime('%m/%d/%Y')
