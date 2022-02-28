@@ -69,7 +69,7 @@ fig_gdp.update_layout(
     title = 'Gross Domestic Product (Constant 2018 prices), y-o-y%',
     font = dict(
         family = 'Helvetica',
-        size = 16,
+        size = 14,
         color = 'black'
     ),
     xaxis = dict(
@@ -94,7 +94,7 @@ fig_inf.update_layout(
     title = 'Inflation rate (2018 = 100), y-o-y%',
     font = dict(
         family = 'Helvetica',
-        size = 16,
+        size = 14,
         color = 'black'
     ),
     xaxis = dict(
@@ -123,7 +123,7 @@ fig_usd.update_layout(
     title = 'USD-PHP exchange rates',
     font = dict(
         family = 'Helvetica',
-        size = 16,
+        size = 14,
         color = 'black'
     ),
     xaxis = dict(
@@ -149,7 +149,7 @@ fig_rrp.update_layout(
     title = 'RRP overnight rates',
     font = dict(
         family = 'Helvetica',
-        size = 16,
+        size = 14,
         color = 'black'
     ),
     xaxis = dict(
