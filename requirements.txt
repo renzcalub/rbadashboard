@@ -1,2 +1,5 @@
 pandas == 1.3.4
 gunicorn==20.0.4
+dash_bootstrap_components == 2.0.0
+dash_core_components == 2.0.0
+dash_html_components == 2.0.0
