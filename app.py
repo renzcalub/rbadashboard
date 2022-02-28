@@ -37,7 +37,7 @@ df_rrp['date'] = pd.to_datetime(df_rrp['date'])
 ## Macroeconomic indicators
 
 gdp = df_Q.loc[:, ['PERIOD', 'Gross Domestic Product (constant 2018 prices)']]
-inf = df_M.loc[:, ['PERIOD', 'Inflation rate (2012=100), all items']]
+inf = df_M.loc[:, ['PERIOD', 'Inflation rate (2018=100), all items']]
 usd = df_M.loc[:, ['PERIOD', 'FOREX: USD to PHP, end of period']]
 rrp = df_rrp.loc[:, ['date', 'rrpovernight']]
 
@@ -53,7 +53,7 @@ gdp['rgdpgr'] = 100*(gdp['rgdp'].pct_change(4))
 # Filter dates to 2010
 
 gdp = gdp.loc[(gdp['PERIOD'] >= "2010-01-01"),]
-inf = inf.loc[(inf['PERIOD'] >= "2010-01-01"),]
+inf = inf.loc[(inf['PERIOD'] >= "2019-01-01"),]
 usd = usd.loc[(usd['PERIOD'] >= "2010-01-01"),]
 rrp = rrp.loc[(rrp['date'] >= "2010-01-01"),]
 
@@ -91,7 +91,7 @@ fig_inf = go.Figure(go.Scatter(
     marker_color = "red"
 ))
 fig_inf.update_layout(
-    title = 'Inflation rate (2012 = 100), y-o-y%',
+    title = 'Inflation rate (2018 = 100), y-o-y%',
     font = dict(
         family = 'Helvetica',
         size = 16,
