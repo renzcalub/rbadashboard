@@ -10,6 +10,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 from collections import OrderedDict
 
+import openpyxl
+
 app = Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP])
 server = app.server
 
