@@ -19,7 +19,6 @@ server = app.server
 # Plots
 #################################################################
 
-df_A = pd.read_excel('INDICATORS_A.xlsx', parse_dates = True)
 df_Q = pd.read_excel('INDICATORS_Q.xlsx')
 df_M = pd.read_excel('INDICATORS_M.xlsx')
 df_rrp = pd.read_excel('sdir.xlsx', sheet_name = "monthly")
