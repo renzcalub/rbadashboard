@@ -19,9 +19,9 @@ server = app.server
 # Plots
 #################################################################
 
-df_Q = pd.read_excel('INDICATORS_Q.xlsx')
-df_M = pd.read_excel('INDICATORS_M.xlsx')
-df_rrp = pd.read_excel('sdir.xlsx', sheet_name = "monthly")
+df_Q = pd.read_excel('data_deploy/INDICATORS_Q.xlsx')
+df_M = pd.read_excel('data_deploy/INDICATORS_M.xlsx')
+df_rrp = pd.read_excel('data_deploy/sdir.xlsx', sheet_name = "monthly")
 
 
 ## Changing dates
