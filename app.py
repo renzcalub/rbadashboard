@@ -72,15 +72,9 @@ fig_map = px.choropleth(dfmap_2020, geojson = regions, locations = 'REGION', col
 featureidkey = 'properties.REGION',
 projection = 'mercator',
 color_continuous_scale="Viridis",
-labels={'GRDP_2020':'GRDP 2020'})
+labels={'GRDP_2020':'GRDP (2018 prices) 2020'})
 fig_map.update_geos(fitbounds="locations", visible=False)
 fig_map.update_layout(
-    title_text = 'Gross Regional Domestic Product 2020',
-    font = dict(
-        family = 'Helvetica',
-        size = 14,
-        color = 'black'
-    ),
     margin={"r":0,"t":0,"l":0,"b":0})
 
 
@@ -245,12 +239,19 @@ head = html.Div(
 
 ROW0DBC = dbc.Row(
     [
-     dbc.Col([
-         dbc.Table.from_dataframe(fcastdf, striped = True, bordered = True, hover = True, class_name = "eight columns")
-     ])   
+        dbc.Col(
+            [
+                dcc.Graph(id = "map", figure = fig_map, className = "six columns")
+            ]
+        ),
+        dbc.Col(
+            [
+                dbc.Table.from_dataframe(fcastdf, striped = True, bordered = True, hover = True, class_name = "six columns") 
+            ]
+        )
     ]
 )
-
+  
 ROW1DBC = dbc.Row(
     [
         dbc.Col(
@@ -289,7 +290,7 @@ ROW3DBC = dbc.Row(
 
 
 colors = {"background": "#011833", "text": "#7FDBFF"}
-app.layout = html.Div(children = [navbar, ROW1DBC, ROW2DBC, ROW0DBC, ROW3DBC], style={"text-align": "center"})
+app.layout = html.Div(children = [navbar, ROW1DBC, ROW2DBC, ROW0DBC], style={"text-align": "center"})
     
 #################################################################
 # Callbacks
