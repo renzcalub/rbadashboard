@@ -12,6 +12,12 @@ from collections import OrderedDict
 
 import openpyxl
 
+from urllib.request import urlopen
+import json
+with urlopen('https://raw.githubusercontent.com/macoymejia/geojsonph/master/Regions/Regions.json') as response:
+    regions = json.load(response)
+
+
 app = Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP])
 server = app.server
 
@@ -56,6 +62,26 @@ gdp = gdp.loc[(gdp['PERIOD'] >= "2010-01-01"),]
 inf = inf.loc[(inf['PERIOD'] >= "2019-01-01"),]
 usd = usd.loc[(usd['PERIOD'] >= "2010-01-01"),]
 rrp = rrp.loc[(rrp['date'] >= "2010-01-01"),]
+
+# For maps
+
+dfmap = pd.read_excel(r'data_deploy/GRDP_2010-2020.xlsx', sheet_name = "Sheet1")
+dfmap_2020 = dfmap.loc[:, ['REGION','GRDP_2020']]
+
+fig_map = px.choropleth(dfmap_2020, geojson = regions, locations = 'REGION', color = 'GRDP_2020',
+featureidkey = 'properties.REGION',
+projection = 'mercator',
+color_continuous_scale="Viridis",
+labels={'GRDP_2020':'GRDP 2020'})
+fig_map.update_geos(fitbounds="locations", visible=False)
+fig_map.update_layout(
+    title_text = 'Gross Regional Domestic Product 2020',
+    font = dict(
+        family = 'Helvetica',
+        size = 14,
+        color = 'black'
+    ),
+    margin={"r":0,"t":0,"l":0,"b":0})
 
 
 # Define plotting function
@@ -255,20 +281,15 @@ ROW2DBC = dbc.Row(
     ]
 )
 
-
-ROW1 = html.Div(children = [
-dcc.Graph(id = "GDP", figure = fig_gdp, className = "five columns"),
-dcc.Graph(id = "infl", figure = fig_inf, className = "five columns"), #dash graph element
-],)
-
-ROW2 = html.Div(children = [
-dcc.Graph(id = "usd", figure = fig_usd, className = "five columns"), #dash graph element
-dcc.Graph(id = "rrp", figure = fig_rrp, className = "five columns"),
-],)
+ROW3DBC = dbc.Row(
+    [
+        html.Div(dcc.Graph(id = "map", figure = fig_map, className = "eight columns"))
+    ]
+)
 
 
 colors = {"background": "#011833", "text": "#7FDBFF"}
-app.layout = html.Div(children = [navbar, ROW1DBC, ROW2DBC, ROW0DBC], style={"text-align": "center"})
+app.layout = html.Div(children = [navbar, ROW1DBC, ROW2DBC, ROW0DBC, ROW3DBC], style={"text-align": "center"})
     
 #################################################################
 # Callbacks
